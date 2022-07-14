@@ -11,11 +11,12 @@ namespace ConsoleIU
         {
             //GetCarsByBrandId();
             //GetCarsByColorId();
+            GetCarDetailDto();
            
        
-            Car car1 = new Car { BrandId = 7, ColorId = 3, CarName = "Ferrai", DailyPrice = 1200, Description = "coupe" };
-            CarManager carManager = new CarManager(new EfCarDal());
-            carManager.add(car1);
+            //Car car1 = new Car { BrandId = 7, ColorId = 3, CarName = "Ferrari", DailyPrice = 1200, Description = "coupe" };
+            //CarManager carManager = new CarManager(new EfCarDal());
+            //carManager.add(car1);
         
 
         }
@@ -24,21 +25,43 @@ namespace ConsoleIU
         public static void GetCarsByBrandId()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarsByBrandId(3))
+            var result = carManager.GetCarsByBrandId(3);
+            if (result.Success == true)
             {
-                Console.WriteLine(car.CarName);
+                foreach (var car in result.Data)
+                {
+                Console.WriteLine(car.CarName +" "+ car.Description);
+                }
             }
+            
         }
         public static void GetCarsByColorId()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarsByColorId(1))
+            var result1 = carManager.GetCarsByColorId(1);
+            if(result1.Success == true)
             {
-                Console.WriteLine(car.CarName);
+                foreach (var car in result1.Data )
+                {
+                    Console.WriteLine(car.CarName + " " + car.Description);
+                }
             }
+           
         }
         
+        public static void GetCarDetailDto()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            var result = carManager.GetCarDetail();
+            if (result.Success==true)
+            {
+                foreach(var car in result.Data)
+                {
+                    Console.WriteLine(car.CarName + " " + car.BrandName);
+                }
+            }
 
+        }
 
     }
 }
