@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Contants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.concrete;
@@ -20,27 +21,50 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            throw new NotImplementedException();
+            if (rental.ReturnDate==null)
+            {
+                return new ErrorResult(Message.ErrorRentalAdd);
+            }
+            _rentalDal.Add(rental);
+            return new SuccessResult(Message.RentalAdd);
         }
 
         public IResult Delete(Rental rental)
         {
-            throw new NotImplementedException();
+            if (rental.RentalId==null)
+            {
+                return new ErrorResult(Message.ErrorRentalDelete);
+            }
+            _rentalDal.Delete(rental);
+            return new SuccessResult(Message.ErrorRentalDelete);
         }
 
         public IDataResult<List<Rental>> GetAll()
         {
-            throw new NotImplementedException();
+            if (DateTime.Now.Hour==00.00)
+            {
+                return new ErrorDataResult<List<Rental>>(Message.ErrorRentalGetAll);
+            }
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(),Message.RentalGetAll);
         }
 
         public IDataResult<Rental> GetByRentalId(int id)
         {
-            throw new NotImplementedException();
+            if (id<=0)
+            {
+                return new ErrorDataResult<Rental>(Message.ErrorGetByRentalId);
+            }
+            return new SuccessDataResult<Rental>(_rentalDal.Get(P=>P.RentalId==id),Message.GetByRentalId);
         }
 
         public IResult Update(Rental rental)
         {
-            throw new NotImplementedException();
+            if (rental.RentDate == null)
+            {
+                return new ErrorResult(Message.ErrorRentalUpdate);
+            }
+            _rentalDal.Update(rental);
+            return new SuccessResult(Message.RentalUpdate);
         }
     }
 }

@@ -46,6 +46,19 @@ namespace Business.Contants
         public static string CustomerUpdate = "Müşteri güncellendi";
 
 
+        public static string ErrorRentalAdd = "Araç Kiralanamaz";
+        public static string RentalAdd = "Araç Kiralandı";
+        public static string ErrorRentalDelete = "Kiralık silinemez";
+        public static string RentalDelete = "Kiralık sildi";
+        public static string ErrorRentalGetAll = "Kiralık araçlar getirilemedi";
+        public static string RentalGetAll = "Kiralık araçlar getirildi";
+        public static string ErrorGetByRentalId = "Kiralık araç getirilemedi";
+        public static string GetByRentalId = "Kiralık araç getirildi";
+        public static string ErrorRentalUpdate = "Kiralık araç güncellenmedi";
+        public static string RentalUpdate = "Kiralık araç güncellendi";
+
+
+
         public static string ErrorUserAdd = "Kullanıcı eklenemedi";
         public static string UserAdd = "Kullanıcı eklendi";
         public static string ErrorUserDelete = "Kullanıcı silinemedi";
