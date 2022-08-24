@@ -31,29 +31,20 @@ namespace Business.Concrete
 
         public IResult Delete(Brand brand)
         {
-            if (brand.BrandId==null)
-            {
-                return new ErrorResult(Message.ErrorBrandDelete);
-            }
+          
             _brandDal.Delete(brand);
             return new SuccessResult(Message.BrandDelete);
         }
 
         public IDataResult<List<Brand>> GetAll()
         {
-            if (DateTime.Now.Hour == 23.59)
-            {
-                return new ErrorDataResult<List<Brand>>(Message.ErrorBrandGetAll);
-            }
+            
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),Message.BrandGetAll);
         }
 
         public IDataResult<Brand> GetByBrandId(int id)
         {
-            if (id == 0)
-            {
-                return new ErrorDataResult <Brand> (Message.ErrorGetByBrandId);
-            }
+            
             return new SuccessDataResult <Brand>(_brandDal.Get(p=>p.BrandId==id),Message.GetByBrandId);
         }
 

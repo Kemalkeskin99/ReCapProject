@@ -31,29 +31,20 @@ namespace Business.Concrete
 
         public IResult Delete(Color color)
         {
-            if (color.ColorId == null)
-            {
-                return new ErrorResult(Message.ErrorColorDelete);
-            }
+         
             _colorDal.Delete(color);
             return new SuccessResult(Message.ColorDelete);
         }
 
         public IDataResult<List<Color>> GetAll()
         {
-            if (DateTime.Now.Hour == 23.59)
-            {
-                return new ErrorDataResult<List<Color>>(Message.ErrorColorGetAll);
-            }
+            
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Message.ColorGetAll);
         }
 
         public IDataResult<Color> GetByColorId(int id)
         {
-            if (id == 0)
-            {
-                return new ErrorDataResult<Color>(Message.ErrorGetByColorId);
-            }
+            
             return new SuccessDataResult<Color>(_colorDal.Get(p => p.ColorId == id), Message.GetByColorId);
         }
 
