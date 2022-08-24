@@ -21,6 +21,10 @@ namespace Business.Contants
 
         public static string CarAddInValid = "Araba eklenemedi";
         public static string CarAdded = "Araba eklendi";
+        public static string ErrorCarDelete = "Araba Silinemedi";
+        public static string CarDelete = "Araba Silindi";
+        public static string ErrorCarUpdate = "Araba Guncellenmedi";
+        public static string CarUpdate = "Araba Guncellendi";
         public static string listedCarInValid = "Arabalar listelenemedi";
         public static string listedCar = "Arabalar listelendi";
 
